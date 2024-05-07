@@ -1,0 +1,108 @@
+Docker --help
+
+docker build -t hello-world .
+
+docker run -d -p 80:80 hello-world
+
+
+
+
+### linux na thakle eivhabe run korte hobe
+
+docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+PS C:\Users\User\Desktop\job-portal> docker ps -a
+
+CONTAINER ID   IMAGE                             COMMAND                  CREATED        STATUS                     PORTS     NAMES
+da960a228c3e   job-portal                        "docker-php-entrypoi…"   47 hours ago   Exited (0) 5 minutes ago             nice_perlman
+1247c4016e14   docker/welcome-to-docker:latest   "/docker-entrypoint.…"   2 days ago     Exited (0) 47 hours ago              epic_chandrasekhar
+
+docker ps
+docker ps -a
+Docker start da960a228c3e
+Docker stop da960a228c3e
+Docker pause da960a228c3e
+Docker unpause da960a228c3e
+Docker rm da960a228c3e      // reload kore dey abr run moddhe diye notun kore run korte hoy
+docker stats da960a228c3e    // Koto tuku memory nilo koto jayga khali ase ta dekha jay
+docker kill da960a228c3e    // kill dile bondho kore dey
+
+
+
+##kivhabe docker hub e login korte hoy --- mane git er moto file gulu rekhe dewa r Ki
+
+ docker login
+ Username: prasanji15
+ Password: Prasanjit11636@.
+
+Git er motoi Docker repository create korte hobe
+
+# Powershell e giye eivhabe tag dite hobe: docker tag job-portal:latest prasanji15/job-portal:latest
+# powershell e eivhabe push korte dite hobe :  docker push prasanji15/job-portal:latest
+
+
+
+###docker compose
+
+docker compse alada alada maintain korte pare,multiple container gulu ke up korte pari down o korte pari,.docker-compose.yml er moodhe multi image use korte pari jemon php,artisan,npm,apache,mysql,composser,artisan,laravel,node js jaja dorkar ta eita moddhe use kora jay.
+
+# multigulu korle: docker-compose up -d --build
+
+
+
+
+## note-taking e kore chilam
+
+
+FROM ubuntu
+
+RUN apt-get update
+
+RUN apt-get install -y apache2
+
+RUN apt-get install -y apache2-utils
+
+RUN apt-get clean
+
+EXPOSE 80 
+
+CMD ["apache2ctl","-D" ,"FOREGROUND"]
+
+eigula eivhabe run korte hoy
+
+
+
+# mysql korte hoile migration migrate korte hole eivhabe korte hobe
+
+->compose run --rm artisan migrate
+
+#npm
+->docker compose run --rm npm run dev
+#dilei run hobe
+->docker-compose up -d --build
+
+#laravel project create korar jonno eivhave project create korte hobe
+
+-> docker compose run --rm composer create-project --prefer-dist laravel/laravel
+
+
+
+
+--Image ---
+
+docker build -t my-php-app .
+
+docker run -d -p 80:80 my-php-app
+
+--container ---
+
+docker ps
+docker ps -a
+docker top ContainerID
+docker stop ContainerID
+docker rm ContainerID
+docker stats ContainerID
+docker attach ContainerID
+docker pause ContainerID
+docker unpause ContainerID
+docker kill ContainerID
